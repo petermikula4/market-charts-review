@@ -1,0 +1,819 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="display market charts according to the list of symbols, filter stocks in screener and display their charts with data labels from the screener, saving your own groups of stocks or other instruments, saving charts properties, saving indicators, automatically displaying stocks after loading the page">
+<meta name="keywords" content="stock charts, stock indicators, stock charts review, market charts overview, automatic loading of charts, stock screener">
+<meta name="author" content="Peter Mikula">
+<meta name="robots" content="index, follow">
+
+<!-- Google Tag Manager -->
+<!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NWTK7NVJ');</script>-->
+<!-- End Google Tag Manager -->
+
+<title>Market charts review</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="css/styles.css?t=14052026">
+<link rel="stylesheet" href="lib/OwlCarousel2-2-3-4/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="lib/OwlCarousel2-2-3-4/dist/assets/owl.theme.default.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<script src="lib/OwlCarousel2-2-3-4/dist/owl.carousel.min.js"></script>
+<script src="js/main.js?t=14052026"></script>
+<script type="text/javascript">f
+
+</script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<!--<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWTK7NVJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>-->
+<!-- End Google Tag Manager (noscript) -->
+<header>
+  <div class="header-top">
+    <a class="logo-name-link" href="/">
+        <span class="logo"><img src="assets/logo13.jpg"></span>
+        <span class="header-name">Market charts review</span>
+    </a>
+    <span class="header-settings" alt="settings" title="settings" style="display: none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"/></svg></span>
+    <span class="groups-wr" style="display: none">
+      <span class="groups-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z"/></svg>
+      </span>
+      <span class="groups">edit groups</span>
+    </span>
+    <span class="menu">
+      <span class="menu-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff"  d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+      </span>
+      <ul class="menu-list box-shadow">
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </span>
+  </div>
+  
+</header>
+<div class="content">
+<div class="bg-wr"></div>
+
+
+
+<!-- TradingView Widget BEGIN -->
+<!--<div class="tradingview-widget-container" style="height:300px;width:300px">
+  <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+  {
+  "autosize": true,
+  "symbol": "NASDAQ:AAPL",
+  "interval": "W",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "enable_publishing": false,
+"hide_legend": true,
+  "allow_symbol_change": true,
+  "calendar": false,
+  "support_host": "https://www.tradingview.com"
+}
+  </script>
+</div>-->
+<!-- TradingView Widget END -->
+<!-- TradingView Widget BEGIN -->
+<!--<div class="tradingview-widget-container" style="height:100%;width:100%">
+  <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+  {
+  "autosize": true,
+  "symbol": "NYSE:AEL/PA",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "enable_publishing": true,
+  "hide_legend": true,
+  "range": "60M",
+  "allow_symbol_change": true,
+  "calendar": false,
+  "support_host": "https://www.tradingview.com"
+}
+  </script>
+</div>-->
+<!-- TradingView Widget END -->
+
+<!-- TradingView Widget BEGIN -->
+<!--<div class="tradingview-widget-container" style="height:100%;width:100%">
+<iframe scrolling="no" allowtransparency="true" frameborder="0" style="user-select: none; box-sizing: border-box; display: block; height: calc(100% - 32px); width: 100%;" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22autosize%22%3Atrue%2C%22symbol%22%3A%22NASDAQ%3AMEDP%22%2C%22interval%22%3A%22W%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22light%22%2C%22style%22%3A%221%22%2C%22hide_legend%22%3Atrue%2C%22allow_symbol_change%22%3Atrue%2C%22calendar%22%3Afalse%2C%22support_host%22%3A%22https%3A%2F%2Fwww.tradingview.com%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22utm_source%22%3A%22%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22advanced-chart%22%2C%22page-uri%22%3A%22__NHTTP__%22%7D" title="advanced chart TradingView widget" lang="en"></iframe>
+</div>-->
+<!-- TradingView Widget END -->
+
+<!-- TradingView Widget BEGIN -->
+<!--<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+  {
+  "symbol": "NASDAQ:AAPL",
+  "width": "100%",
+  "locale": "en",
+  "colorTheme": "light",
+  "isTransparent": false
+}
+  </script>
+</div>-->
+<!-- TradingView Widget END -->
+
+<!-- TradingView Widget BEGIN -->
+<!--<div class="tradingview-widget-container" style="height:100%;width:100%">
+  <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+  {
+  "autosize": true,
+  "symbol": "NASDAQ:AAPL",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "range": "60M",
+  "hide_side_toolbar": false,
+  "allow_symbol_change": true,
+  "details": true,
+  "calendar": false,
+  "support_host": "https://www.tradingview.com"
+}
+  </script>
+</div>-->
+<!-- TradingView Widget END -->
+
+<!-- TradingView Widget BEGIN -->
+<!--<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+  {
+  "isTransparent": false,
+  "largeChartUrl": "",
+  "displayMode": "compact",
+  "width": "100%",
+  "height": "100%",
+  "colorTheme": "light",
+  "symbol": "NASDAQ:AAPL",
+  "locale": "en"
+}
+  </script>
+</div>-->
+<!-- TradingView Widget END -->
+
+<!-- TradingView Widget BEGIN -->
+<!--<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+  {
+  "width": "100%",
+  "height": "100%",
+  "defaultColumn": "overview",
+  "defaultScreen": "most_capitalized",
+  "market": "america",
+  "showToolbar": true,
+  "colorTheme": "light",
+  "locale": "en"
+}
+  </script>
+</div>-->
+<!-- TradingView Widget END -->
+
+<div class="settings-container-wr box-shadow" style="">
+  <h2>Settings</h2>
+  <div class="settings-container" style="">
+    <h3>Chart dimension</h3>
+    <div class="input-wr set-width">
+      <label for="chart-width">Chart width:</label>
+      <input type="text" id="set-chart-width" name="chart-width" placeholder="500"> px
+    </div>
+    <div class="input-wr set-height">
+      <label for="chart-height">Chart height:</label>
+      <input type="text" id="set-chart-height" name="chart-height" placeholder="300"> px
+    </div>
+    
+    <h3>Chart date range</h3>
+    <div class="select-wr set-date-range">
+      <label for="default-date-range">date range:</label>
+      <select name="default-date-range" id="default-date-range">
+        <option value="1D">1D</option>
+        <option value="5D">5D</option>
+        <option value="1M">1M</option>
+        <option value="3M">3M</option>
+        <option value="6M">6M</option>
+        <option value="YTD">YTD</option>
+        <option value="12M">1Y</option>
+        <option value="60M" selected>5Y</option>
+        <option value="ALL">ALL</option>
+      </select>
+    </div>
+    <h3>Indicators</h3>
+    <div class="setting-btn-wr">
+      <span id="add-indicators" class="setting-btn">Add indicators</span>
+    </div>
+    <div class="filled-settings-wr">
+      <input type="checkbox" id="filled-settings" name="filled-settings">
+      <label for="filled-settings">use the filled settings</label>
+      <p>Saved settings values ​​are preferably used. If you have saved settings values ​​but want to use the values ​​filled in this form, select "use the filled settings"</p>
+    </div>
+    <div class="settings-confirm-wr">
+      <div class="settings-confirm">OK</div>
+      <div class="settings-save">Save</div>
+    </div>
+  </div>
+</div>
+
+<div class="groups-container-wr box-shadow" style="">
+  <div class="group-container-close"></div>
+  <div class="group-container-heading">Groups of symbols</div>
+  <div class="groups-data-container">
+    <div class="group-data-wr">
+      <div class="group-name green-text">Favourites</div>
+      <p class="group-data-info">Group "Favourites" appears at the top of the page</p>
+      <div class="group-data">
+        <textarea class="group-data-txt" placeholder="enter symbols divided by comma" spellcheck=false></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="group-container-info-link">
+    <span>Symbols info</span>
+  </div>
+  <div class="group-container-btn-wr">
+    <span id="group-add" class="group-btn">Add group</span>
+    <span id="group-save" class="group-btn">Save</span>
+  </div>
+</div>
+
+<div class="load-groups-container-wr box-shadow" style="">
+  <div class="load-group-container-close"></div>
+  <div class="load-group-container-heading">Groups of symbols</div>
+  <div class="load-groups-data-container">
+    <div class="load-group-data-wr">
+      <div class="load-group-name green-text">Favourites</div>
+      <div class="load-group-data">
+        <div class="load-group-data-txt"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="indicators-wr box-shadow">
+    <span class="indicators-wr-close"></span>
+    <h2>Indicators</h2>
+    <div class="ind-top-form">
+      <div class="indicator-top-input-wr">
+        <input type="checkbox" id="ind_Volume-with-price" name="ind_Volume-with-price">
+        <label for="ind_Volume-with-price">show Volume with price</label>
+      </div>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3B24h%25Volume%22">
+      <input type="checkbox" id="ind_24-hour-Volume" name="ind_24-hour-Volume">
+      <label for="ind_24-hour-Volume">24-hour Volume</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAccumulation_Distribution%22">
+      <input type="checkbox" id="ind_Accumulation-Distribution" name="ind_Accumulation-Distribution">
+      <label for="ind_Accumulation-Distribution">Accumulation/Distribution</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAdvance%251Decline%251Line%22">
+      <input type="checkbox" id="ind_Advance-Decline-Line" name="ind_Advance-Decline-Line">
+      <label for="ind_Advance-Decline-Line">Advance Decline Line</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAdvance%251Decline%251Ratio%22">
+      <input type="checkbox" id="ind_Advance-Decline-Ratio" name="ind_Advance-Decline-Ratio">
+      <label for="ind_Advance-Decline-Ratio">Advance Decline Ratio</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAdvance_Decline_Ratio_Bars%22">
+      <input type="checkbox" id="ind_Advance-Decline-Ratio-Bars" name="ind_Advance-Decline-Ratio-Bars">
+      <label for="ind_Advance-Decline-Ratio-Bars">Advance/Decline Ratio (Bars)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BArnaud%251Legoux%251Moving%251Average%22">
+      <input type="checkbox" id="ind_Arnaud-Legoux-Moving-Average" name="ind_Arnaud-Legoux-Moving-Average">
+      <label for="ind_Arnaud-Legoux-Moving-Average">Arnaud Legoux Moving Average</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAroon%22">
+      <input type="checkbox" id="ind_Aroon" name="ind_Aroon">
+      <label for="ind_Aroon">Aroon</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAverage%25Day%25Range%22">
+      <input type="checkbox" id="ind_Average-Day-Range" name="ind_Average-Day-Range">
+      <label for="ind_Average-Day-Range">Average Day Range</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAverage%251Directional%251Index%22">
+      <input type="checkbox" id="ind_Average-Directional-Index" name="ind_Average-Directional-Index">
+      <label for="ind_Average-Directional-Index">Average Directional Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAverage_True_Range%22">
+      <input type="checkbox" id="ind_Average-True-Range" name="ind_Average-True-Range">
+      <label for="ind_Average-True-Range">Average True Range</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BAwesome_Oscillator%22">
+      <input type="checkbox" id="ind_Awesome-Oscillator" name="ind_Awesome-Oscillator">
+      <label for="ind_Awesome-Oscillator">Awesome Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BBalance%251of%251Power%22">
+      <input type="checkbox" id="ind_Balance-of-Power" name="ind_Balance-of-Power">
+      <label for="ind_Balance-of-Power">Balance of Power</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BBBTrend%22">
+      <input type="checkbox" id="ind_BBtrend" name="ind_BBtrend">
+      <label for="ind_BBtrend">BBtrend</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BBollinger_Bands%22">
+      <input type="checkbox" id="ind_Bollinger-Bands" name="ind_Bollinger-Bands">
+      <label for="ind_Bollinger-Bands">Bollinger Bands</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BBollinger_Bands_B%22">
+      <input type="checkbox" id="ind_Bollinger-Bands-pb" name="ind_Bollinger-Bands-pb">
+      <label for="ind_Bollinger-Bands-pb">Bollinger Bands %b</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BBollinger_Bands_Width%22">
+      <input type="checkbox" id="ind_Bollinger-BandWidth" name="ind_Bollinger-BandWidth">
+      <label for="ind_Bollinger-BandWidth">Bollinger BandWidth</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BBull%25Bear%25Power%22">
+      <input type="checkbox" id="ind_Bull-Bear-Power" name="ind_Bull-Bear-Power">
+      <label for="ind_Bull-Bear-Power">Bull Bear Power</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BChaikin_Money_Flow%22">
+      <input type="checkbox" id="ind_Chaikin-Money-Flow" name="ind_Chaikin-Money-Flow">
+      <label for="ind_Chaikin-Money-Flow">Chaikin Money Flow</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BChaikin_Oscillator%22">
+      <input type="checkbox" id="ind_Chaikin-Oscillator" name="ind_Chaikin-Oscillator">
+      <label for="ind_Chaikin-Oscillator">Chaikin Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BChande%251Kroll%251Stop%22">
+      <input type="checkbox" id="ind_Chande-Kroll-Stop" name="ind_Chande-Kroll-Stop">
+      <label for="ind_Chande-Kroll-Stop">Chande Kroll Stop</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BChande_Momentum_Oscillator%22">
+      <input type="checkbox" id="ind_Chande-Momentum-Oscillator" name="ind_Chande-Momentum-Oscillator">
+      <label for="ind_Chande-Momentum-Oscillator">Chande Momentum Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BChop%251Zone%22">
+      <input type="checkbox" id="ind_Chop-Zone" name="ind_Chop-Zone">
+      <label for="ind_Chop-Zone">Chop Zone</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BChoppiness_Index%22">
+      <input type="checkbox" id="ind_Choppiness-Index" name="ind_Choppiness-Index">
+      <label for="ind_Choppiness-Index">Choppiness Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BCCI%22">
+      <input type="checkbox" id="ind_Commodity-Channel-Index" name="ind_Commodity-Channel-Index">
+      <label for="ind_Commodity-Channel-Index">Commodity Channel Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BConnors_RSI%22">
+      <input type="checkbox" id="ind_Connors-RSI" name="ind_Connors-RSI">
+      <label for="ind_Connors-RSI">Connors RSI</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BCoppock%251Curve%22">
+      <input type="checkbox" id="ind_Coppock-Curve" name="ind_Coppock-Curve">
+      <label for="ind_Coppock-Curve">Coppock Curve</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22CorrelationCoefficient%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_CC" name="ind_CC">
+      <label for="ind_CC">CC (Correlation Coefficient)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BCorrelation_Coeff%22">
+      <input type="checkbox" id="ind_Correlation-Coefficient" name="ind_Correlation-Coefficient">
+      <label for="ind_Correlation-Coefficient">Correlation Coefficient</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BCumulative%251Volume%251Delta%22">
+      <input type="checkbox" id="ind_Cumulative-Volume-Delta" name="ind_Cumulative-Volume-Delta">
+      <label for="ind_Cumulative-Volume-Delta">Cumulative Volume Delta</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BCumulative%251Volume%251Index%22">
+      <input type="checkbox" id="ind_Cumulative-Volume-Index" name="ind_Cumulative-Volume-Index">
+      <label for="ind_Cumulative-Volume-Index">Cumulative Volume Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BDPO%22">
+      <input type="checkbox" id="ind_Detrended-Price-Oscillator" name="ind_Detrended-Price-Oscillator">
+      <label for="ind_Detrended-Price-Oscillator">Detrended Price Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BDMI%22">
+      <input type="checkbox" id="ind_Directional-Movement-Index" name="ind_Directional-Movement-Index">
+      <label for="ind_Directional-Movement-Index">Directional Movement Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BDonchian_Channels%22">
+      <input type="checkbox" id="ind_Donchian-Channels" name="ind_Donchian-Channels">
+      <label for="ind_Donchian-Channels">Donchian Channels</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BDEMA%22">
+      <input type="checkbox" id="ind_Double-EMA" name="ind_Double-EMA">
+      <label for="ind_Double-EMA">Double EMA</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BEOM%22">
+      <input type="checkbox" id="ind_Ease-of-Movement" name="ind_Ease-of-Movement">
+      <label for="ind_Ease-of-Movement">Ease of Movement</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BEFI%22">
+      <input type="checkbox" id="ind_Elder-Force-Index" name="ind_Elder-Force-Index">
+      <label for="ind_Elder-Force-Index">Elder Force Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BENV%22">
+      <input type="checkbox" id="ind_Envelope" name="ind_Envelope">
+      <label for="ind_Envelope">Envelope</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BFisher_Transform%22">
+      <input type="checkbox" id="ind_Fisher-Transform" name="ind_Fisher-Transform">
+      <label for="ind_Fisher-Transform">Fisher Transform</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BGaps%22">
+      <input type="checkbox" id="ind_Gaps" name="ind_Gaps">
+      <label for="ind_Gaps">Gaps</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BHistorical_Volatility%22">
+      <input type="checkbox" id="ind_Historical-Volatility" name="ind_Historical-Volatility">
+      <label for="ind_Historical-Volatility">Historical Volatility</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BHull%251MA%22">
+      <input type="checkbox" id="ind_Hull-Moving-Average" name="ind_Hull-Moving-Average">
+      <label for="ind_Hull-Moving-Average">Hull Moving Average</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BIchimoku%251Cloud%22">
+      <input type="checkbox" id="ind_Ichimoku-Cloud" name="ind_Ichimoku-Cloud">
+      <label for="ind_Ichimoku-Cloud">Ichimoku Cloud</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BKeltner_Channels%22">
+      <input type="checkbox" id="ind_Keltner-Channels" name="ind_Keltner-Channels">
+      <label for="ind_Keltner-Channels">Keltner Channels</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BKlinger%251Oscillator%22">
+      <input type="checkbox" id="ind_Klinger-Oscillator" name="ind_Klinger-Oscillator">
+      <label for="ind_Klinger-Oscillator">Klinger Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BKnow_Sure_Thing%22">
+      <input type="checkbox" id="ind_Know-Sure-Thing" name="ind_Know-Sure-Thing">
+      <label for="ind_Know-Sure-Thing">Know Sure Thing</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BLeast%251Squares%251Moving%251Average%22">
+      <input type="checkbox" id="ind_Least-Squares-Moving-Average" name="ind_Least-Squares-Moving-Average">
+      <label for="ind_Least-Squares-Moving-Average">Least Squares Moving Average</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BLinear_Regression%22">
+      <input type="checkbox" id="ind_Linear-Regression-Channel" name="ind_Linear-Regression-Channel">
+      <label for="ind_Linear-Regression-Channel">Linear Regression Channel</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMA%251Cross%22">
+      <input type="checkbox" id="ind_MA-Cross" name="ind_MA-Cross">
+      <label for="ind_MA-Cross">MA Cross</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMass%251Index%22">
+      <input type="checkbox" id="ind_Mass-Index" name="ind_Mass-Index">
+      <label for="ind_Mass-Index">Mass Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMcGinley%251Dynamic%22">
+      <input type="checkbox" id="ind_McGinley-Dynamic" name="ind_McGinley-Dynamic">
+      <label for="ind_McGinley-Dynamic">McGinley Dynamic</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMedian%22">
+      <input type="checkbox" id="ind_Median" name="ind_Median">
+      <label for="ind_Median">Median</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMomentum%22">
+      <input type="checkbox" id="ind_Momentum" name="ind_Momentum">
+      <label for="ind_Momentum">Momentum</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMoney_Flow%22">
+      <input type="checkbox" id="ind_Money-Flow-Index" name="ind_Money-Flow-Index">
+      <label for="ind_Money-Flow-Index">Money Flow Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22MoonPhases%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_MP" name="ind_MP">
+      <label for="ind_MP">MP (Moon Phases)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMoon%251Phases%22">
+      <input type="checkbox" id="ind_Moon-Phases" name="ind_Moon-Phases">
+      <label for="ind_Moon-Phases">Moon Phases</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMACD%22">
+      <input type="checkbox" id="ind_Moving-Average-Convergence-Divergence" name="ind_Moving-Average-Convergence-Divergence">
+      <label for="ind_Moving-Average-Convergence-Divergence">Moving Average Convergence Divergence</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BEMA%22">
+      <input type="checkbox" id="ind_Moving-Average-Exponential" name="ind_Moving-Average-Exponential">
+      <label for="ind_Moving-Average-Exponential">Moving Average Exponential</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMA%25Ribbon%22">
+      <input type="checkbox" id="ind_Moving-Average-Ribbon" name="ind_Moving-Average-Ribbon">
+      <label for="ind_Moving-Average-Ribbon">Moving Average Ribbon</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BSMA%22">
+      <input type="checkbox" id="ind_Moving-Average-Simple" name="ind_Moving-Average-Simple">
+      <label for="ind_Moving-Average-Simple">Moving Average Simple</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BWMA%22">
+      <input type="checkbox" id="ind_Moving-Average-Weighted" name="ind_Moving-Average-Weighted">
+      <label for="ind_Moving-Average-Weighted">Moving Average Weighted</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BMulti-Time%25Period%25Charts%22">
+      <input type="checkbox" id="ind_Multi-Time-Period-Charts" name="ind_Multi-Time-Period-Charts">
+      <label for="ind_Multi-Time-Period-Charts">Multi-Time Period Charts</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BNet%251Volume%22">
+      <input type="checkbox" id="ind_Net-Volume" name="ind_Net-Volume">
+      <label for="ind_Net-Volume">Net Volume</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BOn_Balance_Volume%22">
+      <input type="checkbox" id="ind_On-Balance-Volume" name="ind_On-Balance-Volume">
+      <label for="ind_On-Balance-Volume">On Balance Volume</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BOpen%25Interest%22">
+      <input type="checkbox" id="ind_Open-Interest" name="ind_Open-Interest">
+      <label for="ind_Open-Interest">Open Interest</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BPSAR%22">
+      <input type="checkbox" id="ind_Parabolic-SAR" name="ind_Parabolic-SAR">
+      <label for="ind_Parabolic-SAR">Parabolic SAR</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BPivot%251Points%251High%251Low%22">
+      <input type="checkbox" id="ind_Pivot-Points-High-Low" name="ind_Pivot-Points-High-Low">
+      <label for="ind_Pivot-Points-High-Low">Pivot Points High Low</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BPivot%251Points%251Standard%22">
+      <input type="checkbox" id="ind_Pivot-Points-Standard" name="ind_Pivot-Points-Standard">
+      <label for="ind_Pivot-Points-Standard">Pivot Points Standard</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BPrice_Oscillator%22">
+      <input type="checkbox" id="ind_Price-Oscillator" name="ind_Price-Oscillator">
+      <label for="ind_Price-Oscillator">Price Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BPrice%251Target%22">
+      <input type="checkbox" id="ind_Price-Target" name="ind_Price-Target">
+      <label for="ind_Price-Target">Price Target</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22PriceVolumeTrend%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_PVT" name="ind_PVT">
+      <label for="ind_PVT">PVT (Price Volume Trend)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BPrice_Volume_Trend%22">
+      <input type="checkbox" id="ind_Price-Volume-Trend" name="ind_Price-Volume-Trend">
+      <label for="ind_Price-Volume-Trend">Price Volume Trend</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BROC%22">
+      <input type="checkbox" id="ind_Rate-Of-Change" name="ind_Rate-Of-Change">
+      <label for="ind_Rate-Of-Change">Rate Of Change</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BRSI%22">
+      <input type="checkbox" id="ind_Relative-Strength-Index" name="ind_Relative-Strength-Index">
+      <label for="ind_Relative-Strength-Index">Relative Strength Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BRelative_Vigor_Index%22">
+      <input type="checkbox" id="ind_Relative-Vigor-Index" name="ind_Relative-Vigor-Index">
+      <label for="ind_Relative-Vigor-Index">Relative Vigor Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BRelative_Volatility_Index%22">
+      <input type="checkbox" id="ind_Relative-Volatility-Index" name="ind_Relative-Volatility-Index">
+      <label for="ind_Relative-Volatility-Index">Relative Volatility Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BRelative%251Volume%251at%251Time%22">
+      <input type="checkbox" id="ind_Relative-Volume-at-Time" name="ind_Relative-Volume-at-Time">
+      <label for="ind_Relative-Volume-at-Time">Relative Volume at Time</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22BookerIntradayPivots%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_RB_IPP" name="ind_RB_IPP">
+      <label for="ind_RB_IPP">RB_IPP (Rob Booker - Intraday Pivot Points)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22BookerKnoxvilleDivergence%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_RB_KnoxDiv" name="ind_RB_KnoxDiv">
+      <label for="ind_RB_KnoxDiv">RB_KnoxDiv (Rob Booker - Knoxville Divergence)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22BookerMissedPivots%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_RB_MPP" name="ind_RB_MPP">
+      <label for="ind_RB_MPP">RB_MPP (Rob Booker - Missed Pivot Points)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22BookerReversal%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_RB_Rev" name="ind_RB_Rev">
+      <label for="ind_RB_Rev">RB_Rev (Rob Booker - Reversal)</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BRob%251Booker%251Ghost%251Pivots%251v2%22">
+      <input type="checkbox" id="ind_Rob-Booker-Ziv-Ghost-Pivots" name="ind_Rob-Booker-Ziv-Ghost-Pivots">
+      <label for="ind_Rob-Booker-Ziv-Ghost-Pivots">Rob Booker - Ziv Ghost Pivots</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BDivergence%251Indicator%22">
+      <input type="checkbox" id="ind_RSI-Divergence-Indicator" name="ind_RSI-Divergence-Indicator">
+      <label for="ind_RSI-Divergence-Indicator">RSI Divergence Indicator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BSeasonality%22">
+      <input type="checkbox" id="ind_Seasonality" name="ind_Seasonality">
+      <label for="ind_Seasonality">Seasonality</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BSMI_Ergodic_Indicator_Oscillator%22">
+      <input type="checkbox" id="ind_SMI-Ergodic-Indicator" name="ind_SMI-Ergodic-Indicator">
+      <label for="ind_SMI-Ergodic-Indicator">SMI Ergodic Indicator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BSMI_Ergodic_Oscillator%22">
+      <input type="checkbox" id="ind_SMI-Ergodic-Oscillator" name="ind_SMI-Ergodic-Oscillator">
+      <label for="ind_SMI-Ergodic-Oscillator">SMI Ergodic Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BSmoothed%251Moving%251Average%22">
+      <input type="checkbox" id="ind_Smoothed-Moving-Average" name="ind_Smoothed-Moving-Average">
+      <label for="ind_Smoothed-Moving-Average">Smoothed Moving Average</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BStochastic%22">
+      <input type="checkbox" id="ind_Stochastic" name="ind_Stochastic">
+      <label for="ind_Stochastic">Stochastic</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BSMI%22">
+      <input type="checkbox" id="ind_Stochastic-Momentum-Index" name="ind_Stochastic-Momentum-Index">
+      <label for="ind_Stochastic-Momentum-Index">Stochastic Momentum Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BStochastic_RSI%22">
+      <input type="checkbox" id="ind_Stochastic-RSI" name="ind_Stochastic-RSI">
+      <label for="ind_Stochastic-RSI">Stochastic RSI</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BSupertrend%22">
+      <input type="checkbox" id="ind_Supertrend" name="ind_Supertrend">
+      <label for="ind_Supertrend">Supertrend</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BTechnical%251Ratings%22">
+      <input type="checkbox" id="ind_Technical-Ratings" name="ind_Technical-Ratings">
+      <label for="ind_Technical-Ratings">Technical Ratings</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BTime%251Weighted%251Average%251Price%22">
+      <input type="checkbox" id="ind_Time-Weighted-Average-Price" name="ind_Time-Weighted-Average-Price">
+      <label for="ind_Time-Weighted-Average-Price">Time Weighted Average Price</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BTrading%251Sessions%22">
+      <input type="checkbox" id="ind_Trading-Sessions" name="ind_Trading-Sessions">
+      <label for="ind_Trading-Sessions">Trading Sessions</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BTrend%251Strength%251Index%22">
+      <input type="checkbox" id="ind_Trend-Strength-Index" name="ind_Trend-Strength-Index">
+      <label for="ind_Trend-Strength-Index">Trend Strength Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BTEMA%22">
+      <input type="checkbox" id="ind_Triple-EMA" name="ind_Triple-EMA">
+      <label for="ind_Triple-EMA">Triple EMA</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BTRIX%22">
+      <input type="checkbox" id="ind_TRIX" name="ind_TRIX">
+      <label for="ind_TRIX">TRIX</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BTrue%251Strength%251Indicator%22">
+      <input type="checkbox" id="ind_True-Strength-Index" name="ind_True-Strength-Index">
+      <label for="ind_True-Strength-Index">True Strength Index</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BUltimate_Oscillator%22">
+      <input type="checkbox" id="ind_Ultimate-Oscillator" name="ind_Ultimate-Oscillator">
+      <label for="ind_Ultimate-Oscillator">Ultimate Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BUP_DOWN_Volume%22">
+      <input type="checkbox" id="ind_UP_DOWN-Volume" name="ind_UP_DOWN-Volume">
+      <label for="ind_UP_DOWN-Volume">Up/Down Volume</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BVisible%251Average%251Price%22">
+      <input type="checkbox" id="ind_Visible-Average-Price" name="ind_Visible-Average-Price">
+      <label for="ind_Visible-Average-Price">Visible Average Price</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BVolatility_Stop%22">
+      <input type="checkbox" id="ind_Volatility-Stop" name="ind_Volatility-Stop">
+      <label for="ind_Volatility-Stop">Volatility Stop</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22Volume%40tv-basicstudies%22">
+      <input type="checkbox" id="ind_Volume" name="ind_Volume">
+      <label for="ind_Volume">Volume</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BVolume%251Delta%22">
+      <input type="checkbox" id="ind_Volume-Delta" name="ind_Volume-Delta">
+      <label for="ind_Volume-Delta">Volume Delta</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BVolume%251Oscillator%22">
+      <input type="checkbox" id="ind_Volume-Oscillator" name="ind_Volume-Oscillator">
+      <label for="ind_Volume-Oscillator">Volume Oscillator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BVWAP%22">
+      <input type="checkbox" id="ind_Volume-Weighted-Average-Price" name="ind_Volume-Weighted-Average-Price">
+      <label for="ind_Volume-Weighted-Average-Price">Volume Weighted Average Price</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BVWMA%22">
+      <input type="checkbox" id="ind_Volume-Weighted-Moving-Average" name="ind_Volume-Weighted-Moving-Average">
+      <label for="ind_Volume-Weighted-Moving-Average">Volume Weighted Moving Average</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BVortex%251Indicator%22">
+      <input type="checkbox" id="ind_Vortex-Indicator" name="ind_Vortex-Indicator">
+      <label for="ind_Vortex-Indicator">Vortex Indicator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BWilliams_Alligator%22">
+      <input type="checkbox" id="ind_Williams-Alligator" name="ind_Williams-Alligator">
+      <label for="ind_Williams-Alligator">Williams Alligator</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BWhilliams_Fractals%22">
+      <input type="checkbox" id="ind_Williams-Fractals" name="ind_Williams-Fractals">
+      <label for="ind_Williams-Fractals">Williams Fractals</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BWillams_R%22">
+      <input type="checkbox" id="ind_Williams-Percent-Range" name="ind_Williams-Percent-Range">
+      <label for="ind_Williams-Percent-Range">Williams Percent Range</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BWoodies%251CCI%22">
+      <input type="checkbox" id="ind_Woodies-CCI" name="ind_Woodies-CCI">
+      <label for="ind_Woodies-CCI">Woodies CCI</label>
+    </div>
+    <div class="indicator-input-wr" data-ind-code="%22STD%3BZig_Zag%22">
+      <input type="checkbox" id="ind_Zig-Zag" name="ind_Zig-Zag">
+      <label for="ind_Zig-Zag">Zig Zag</label>
+    </div>
+    <div class="indicator-confirm-wr">
+      <div class="indicator-confirm">OK</div>
+    </div>
+</div>
+<div class="shadow-el"></div>
+<div class="content-center">
+  <h2>
+    <span>About</span>
+  </h2>
+  <div>
+  <p>This page uses <a href="https://www.tradingview.com/widget-docs/widgets/charts/advanced-chart/" target="_blank">Tradingview widgets</a> to display charts of financial instruments. Available categories of financial instruments are: Stock, Funds, Futures, Forex, CFD, Crypto, Indices, Bonds, Economy. Some instruments are not available on this site but only on Tradingview.</p>
+  <p>It is possible to save settings and groups of symbols from which charts are loaded. This data is stored in the browser in Web Storage and the data remains stored even after the browser is closed.</p>
+  <h3>Settings</h3>
+  <p class="clearfix"><img src="assets/about-image-1.png" alt="sample - settings" style="float: right; width: 200px; margin-left: 20px;"><span style="">You can customize the charts in the settings - you can adjust the charts size (width and height), date range and add indicators. The saved settings will be used for all charts that will be displayed. Charts already displayed on the page will not be affected.<br><br> If you have saved the settings but want to insert charts with other settings, choose your settings, mark "use the filled settings", confirm with the OK button and insert the charts.<br><br>If a sufficiently small width is specified, the graphs are displayed next to each other and thus it is possible to display several graphs on one screen.<br><br>You can display the chart with multiple indicators. You can also add indicators to a chart that is already displayed (from the top menu of the chart), but in this case the number of indicators can be a maximum of 2. It is a limitation of Tradingview for the Basic plan. So if you enter indicators from the settings window, you avoid this limitation and you can display more than 2 indicators.</span></p>
+  <p>Charts can be displayed in three ways:</p>
+  <ul>
+    <li>by entering a list of symbols in Ticker box</li>
+    <li>by transferring data from the screener to Screener box</li>
+    <li>by loading from saved groups</li>
+  </ul>
+  <h3>Ticker box</h3>
+  <p>In the Ticker box, you can directly enter a list of symbols (or tickers in the case of stocks) separated by commas and then display charts by pressing the "show charts" button. You can view information about entering symbols by clicking on the <img src="assets/about-image-2.png" alt="sample - symbols info" style="width: 28px; position: relative; top: 3px"> button in the upper right corner of the Ticker box.</p>
+  <h3>Screener box</h3>
+  <p>Screener box allows displaying charts of stocks filtered by screeners together with values ​​from screener columns that will be displayed as labels below the stock charts. In this way, you can get an review of stock charts together with the values ​​displayed in the screener on one screen.</p>
+  <p>In the stock screener, you can select a default column sets by clicking <img src="assets/about-image-5.png" alt="sample - column sets" style="width: auto; position: relative; top: 9px">, add or remove columns by clicking <img src="assets/about-image-6.png" alt="sample - column setup" style="width: auto; position: relative; top: 7px"> or <img src="assets/about-image-7.png" alt="sample - column setup" style="width: auto; position: relative; top: 7px">, sort in ascending or descending order by clicking a column name, or filter data by values ​​by clicking <img src="assets/about-image-8.png" alt="sample - column setup" style="width: auto; position: relative; top: 9px">in a column name.</p>
+  <div style="overflow: scroll">
+    <img src="assets/about-image-3.png" alt="sample - screener" style="width: 100%; min-width: 800px;">
+  </div>
+  <p>After copying the data into the Screener box and clicking on the "show charts + labels" button, stock charts with labels will be displayed. The label on which sorting was applied will have a blue underline and the labels on which value filters were applied will have blue font.</p>
+  <div style="overflow: scroll">
+    <img src="assets/about-image-4.png" alt="sample - charts with labels" style="width: 100%; min-width: 800px;">
+  </div>
+  <p>Clicking on <img src="assets/about-image-9.png" alt="sample - details button" style="width: auto; position: relative; top: 7px"> will display the details of the stock and clicking on <img src="assets/about-image-10.png" alt="sample - enlarge button" style="width: auto; position: relative; top: 7px"> will display the chart in full screen.</p>
+  <p>If you want to get the ticker list from the screener, copy the screener data into the Screener box and press the "insert to ticker box" button under the Screener box.</p>
+  <h3>Groups</h3>
+  <p>It is possible to save groups of symbols from which charts can be loaded at once. Groups can be created by clicking on "EDIT GROUPS" in the header of the page.</p>
+  <div style="overflow: scroll; text-align: center;">
+    <img src="assets/about-image-11.png" alt="sample - groups" style="width: auto; min-width: 400px;">
+  </div>
+  <p>There is one default group called "Favorites". If a list of symbols is stored in it, after loading the page, the charts of these symbols are automatically loaded at the top of the page under the slider, using the saved settings.</p>
+  <p>You can create multiple groups. Group charts can be loaded by clicking on the "load group" button under the ticker box.</p>
+
+  
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="box-section">
+  <div class="col-50">
+    <div class="ticker-box-wr tb-i-center">
+      <div class="ticker-box-info box-shadow">
+        <div class="ticker-info-close"></div>
+        <div class="ticker-info-text">
+          <p>Symbols info</p>
+          <p>You can search for the symbol by clicking on "Symbol Search" on any loaded chart.</p>
+          <img src="symbol-info-1.png">
+          <p>If only the symbols themselves are entered, the graph of the first symbol will be displayed.</p>
+          <img src="symbol-info-2.png">
+          <p>To display a graph of another symbol, enter the source name and a colon before the symbol name, for example <span class="info-symbol">MIL:ABT</span>.</p>
+          <p>Multiple sources can be used and not only stock charts can be displayed, for example <span class="info-symbol">AAPL, MIL:ABT, EURUSD, BTCUSDT, SPX500USD</span> display graph of Apple, AbitareIn, EUR/USD, Bitcoin and US SPX 500.</p>
+          <p>Some symbols are only available on TradingView.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<footer></footer>
+</body>
+</html>
+
+
+
+
+
+
+

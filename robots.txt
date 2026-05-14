@@ -1,0 +1,3 @@
+# Všetci roboti môžu indexovať celý web
+User-agent: *
+Allow: /
