@@ -5,7 +5,7 @@ An interactive financial dashboard financial dashboard designed for real-time st
 ---
 
 ## 🚀 Live Demo
-**[]**
+**[https://market-charts-review.netlify.app/]**
 
 ---
 
