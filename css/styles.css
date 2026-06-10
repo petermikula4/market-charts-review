@@ -440,10 +440,26 @@ h3{
   z-index: 1;
   background: var(--lightcream);
 }
+.resizable-element{
+  resize: both;
+  overflow: auto;
+}
+.dim-display {
+    //display: none;
+    position: absolute;
+    bottom: 1px; /* Pod elementom */
+    left: 1px;
+    font-size: 9px;
+    color: #222;
+    padding: 2px 6px;
+    border-radius: 4px;
+    pointer-events: none; /* Aby neprekážalo pri klikaní */
+}
 .info-container{
   border-right: 1px solid #888;
   border-left: 1px solid #888;
   border-bottom: 1px solid #888;
+  box-sizing: border-box;
 }
 .stock-details-container{
   display: none;

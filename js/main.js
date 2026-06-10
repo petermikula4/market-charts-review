@@ -87,6 +87,30 @@ $(document).ready(function(){
       });
     });*/
     
+    const widgetObserver = new ResizeObserver(entries => {
+        for (let entry of entries) {
+            const container = entry.target; // Toto je náš .tradingview-widget-container
+            const width = Math.round(entry.contentRect.width + 2); //2 je celková veľkosť rámčekov
+            const height = Math.round(entry.contentRect.height + 2);
+
+            // 1. Aktualizácia rozmerov (.dim-display existuje v oboch prípadoch)
+            const display = container.querySelector('.dim-display');
+            if (display) {
+                display.textContent = `w:${width}px, h:${height}px`;
+            }
+
+            // 2. Synchronizácia šírky info-containeru (len ak existuje)
+            // Použijeme .closest() na nájdenie .outer, čo je bezpečné pre obe štruktúry
+            const outer = container.closest('.tradingview-widget-container-outer');
+            if (outer) {
+                const infoContainer = outer.querySelector('.info-container');
+                if (infoContainer) {
+                    infoContainer.style.width = width + 'px';
+                }
+            }
+        }
+    });
+    
     
     // load favourite group
       //var scGroupValue = getCookie('sc_group');
@@ -206,7 +230,7 @@ $(document).ready(function(){
     
         var widgetTemplatePart1; var widgetTemplatePart1b; var widgetTemplatePart2; var widgetTemplatePart3; var widgetTemplatePart4;
         widgetTemplatePart1 = '<!-- TradingView Widget BEGIN -->';
-        widgetTemplatePart1 = widgetTemplatePart1 + '<div class="tradingview-widget-container';
+        widgetTemplatePart1 = widgetTemplatePart1 + '<div class="tradingview-widget-container resizable-element';
         widgetTemplatePart1b = '" style="position: relative; ';
         widgetTemplatePart1b = widgetTemplatePart1b + containerDimensionStr + '">';
         widgetTemplatePart1b = widgetTemplatePart1b + '<div class="stock-details-container"><div class="stock-details-inner"><div class="stock-details-close"></div><div class="stock-details-up"></div><div class="stock-details-down"></div></div></div>';
@@ -215,6 +239,7 @@ $(document).ready(function(){
         widgetTemplatePart1b = widgetTemplatePart1b + '<div class="stock-detail" title="details" data-ticker-searched="';
         widgetTemplatePart2 = '"><div class="stock-detail-bar"></div><div class="stock-detail-bar"></div><div class="stock-detail-bar"></div></div>';
         widgetTemplatePart2 = widgetTemplatePart2 + '<div class="widget-remove" title="remove"></div>';
+        widgetTemplatePart2 = widgetTemplatePart2 + '<div class="dim-display"></div>';
         widgetTemplatePart2 = widgetTemplatePart2 + '<div class="ticker-searched">';
         widgetTemplatePart3 = '</div>';
         widgetTemplatePart3 = widgetTemplatePart3 + '<iframe scrolling="no" allowtransparency="true" frameborder="0" style="user-select: none; box-sizing: border-box; display: block; height: calc(100% - 32px); width: 100%;" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22autosize%22%3Atrue%2C%22symbol%22%3A%22';
@@ -306,12 +331,20 @@ $(document).ready(function(){
             lastAddedGroup = " last-added-group";
           }
           widget = widgetTemplatePart1 + lastAddedGroup + widgetTemplatePart1b + listArray[i] + widgetTemplatePart2 + listArray[i]+ widgetTemplatePart3 + listArray[i]+ widgetTemplatePart4;
+          let $fullWidget = $($.parseHTML(widget));
           if(favourite == 0){
-            jQuery(".stocks").append(widget);
+            jQuery(".stocks").append($fullWidget);
           }
           if(favourite == 1){
-            jQuery(".favourite-stocks").append(widget);
+            jQuery(".favourite-stocks").append($fullWidget);
           }
+          // Teraz nájdeme kontajner v rámci už vloženého obsahu, aby sme ho mohli pozorovať
+          let $container = $fullWidget.filter('.tradingview-widget-container');
+          if ($container.length > 0) {
+              widgetObserver.observe($container[0]);
+          }
+          // Voliteľne: Nastavíme počiatočné rozmery do .dim-display
+          $container.find('.dim-display').text(`w:${chartWidth.replace('px','')}, h:${chartHeith.replace('px','')}`);
         }
         
         if(favourite == 0){
@@ -1124,7 +1157,7 @@ $(document).ready(function(){
 		
 		
 		widgetTemplatePart1b = '">';
-        widgetTemplatePart1b = widgetTemplatePart1b + '<div class="tradingview-widget-container" style="position: relative; ';
+        widgetTemplatePart1b = widgetTemplatePart1b + '<div class="tradingview-widget-container resizable-element" style="position: relative; ';
         widgetTemplatePart1b = widgetTemplatePart1b + containerDimensionStr + '">';
         widgetTemplatePart1b = widgetTemplatePart1b + '<div class="stock-details-container"><div class="stock-details-inner"><div class="stock-details-close"></div><div class="stock-details-up"></div><div class="stock-details-down"></div></div></div>';
         widgetTemplatePart1b = widgetTemplatePart1b + '<div class="tradingview-widget-inner">';
@@ -1132,6 +1165,7 @@ $(document).ready(function(){
         widgetTemplatePart1b = widgetTemplatePart1b + '<div class="stock-detail" title="details" data-ticker-searched="';
         widgetTemplatePart2 = '"><div class="stock-detail-bar"></div><div class="stock-detail-bar"></div><div class="stock-detail-bar"></div></div>';
         widgetTemplatePart2 = widgetTemplatePart2 + '<div class="widget-remove" title="remove"></div>';
+        widgetTemplatePart2 = widgetTemplatePart2 + '<div class="dim-display"></div>';
         widgetTemplatePart2 = widgetTemplatePart2 + '<div class="ticker-searched">';
         widgetTemplatePart3 = '</div>';
         widgetTemplatePart3 = widgetTemplatePart3 + '<iframe scrolling="no" allowtransparency="true" frameborder="0" style="user-select: none; box-sizing: border-box; display: block; height: calc(100% - 32px); width: 100%;" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22autosize%22%3Atrue%2C%22symbol%22%3A%22';
@@ -1206,7 +1240,22 @@ $(document).ready(function(){
             }
 			
 			widget = widgetTemplatePart1 + lastAddedGroup + widgetTemplatePart1b + ticker + widgetTemplatePart2 + ticker + widgetTemplatePart3 + ticker + widgetTemplatePart4 + infoHtml + widgetTemplatePart5;
-			jQuery(".stocks").append(widget);
+            let $fullWidget = $($.parseHTML(widget));
+			jQuery(".stocks").append($fullWidget);
+            // UPRAVENÉ: Ak je .tradingview-widget-container vnútri .tradingview-widget-container-outer
+            // musíme ho nájsť pomocou .find() (ak je kontajner súčasťou fullWidgetu)
+            // alebo použiť .filter() ak je fullWidget priamo ten kontajner.
+            let $container = $fullWidget.hasClass('tradingview-widget-container') 
+                            ? $fullWidget 
+                            : $fullWidget.find('.tradingview-widget-container');
+
+            if ($container.length > 0) {
+                widgetObserver.observe($container[0]);
+                // Nastavenie počiatočných rozmerov
+                $container.find('.dim-display').text(`w:${chartWidth.replace('px','')}, h:${chartHeith.replace('px','')}`);
+            } else {
+                console.warn("Element .tradingview-widget-container nebol nájdený v štruktúre!");
+            }
 		}
 		jQuery(".charts-with-desc-counts").slideToggle();
 		
