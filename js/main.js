@@ -90,17 +90,16 @@ $(document).ready(function(){
     const widgetObserver = new ResizeObserver(entries => {
         for (let entry of entries) {
             const container = entry.target; // Toto je náš .tradingview-widget-container
-            const width = Math.round(entry.contentRect.width + 2); //2 je celková veľkosť rámčekov
+            const width = Math.round(entry.contentRect.width + 2); // 2 je celková veľkosť rámčekov
             const height = Math.round(entry.contentRect.height + 2);
 
-            // 1. Aktualizácia rozmerov (.dim-display existuje v oboch prípadoch)
+            // 1. Aktualizácia rozmerov
             const display = container.querySelector('.dim-display');
             if (display) {
                 display.textContent = `w:${width}px, h:${height}px`;
             }
 
-            // 2. Synchronizácia šírky info-containeru (len ak existuje)
-            // Použijeme .closest() na nájdenie .outer, čo je bezpečné pre obe štruktúry
+            // 2. Synchronizácia šírky info-containeru
             const outer = container.closest('.tradingview-widget-container-outer');
             if (outer) {
                 const infoContainer = outer.querySelector('.info-container');
@@ -108,8 +107,38 @@ $(document).ready(function(){
                     infoContainer.style.width = width + 'px';
                 }
             }
+
+            // 3. SYNCHRONIZÁCIA – TERAZ LEN PRE HLAVNÉ GRAFY
+            // Skontrolujeme, či je zaškrtnutý checkbox na synchrónny resize
+            const syncEnabled = $('#syncSizeCheck').is(':checked');
+            
+            // OCHRANA PRED NEKONEČNOU SLUČKOU:
+            // Ak bol tento element zmenený skriptom, iba zmažeme príznak a nepokračujeme v synchronizácii
+            if (container.hasAttribute('data-script-resized')) {
+                container.removeAttribute('data-script-resized');
+                continue; 
+            }
+
+            // Ak je synchronizácia zapnutá, prenesieme rozmery na ostatné grafy
+            if (syncEnabled) {
+                // Keďže používate CSS "resize: both", prehliadač zapisuje zmeny priamo do inline štýlu elementu
+                const targetWidth = container.style.width;
+                const targetHeight = container.style.height;
+
+                // Nájdeme všetky ostatné grafy na stránke okrem toho, s ktorým práve hýbeme
+                // ZMENA: Pridali sme triedu .resizable-element do selectora
+                $('.tradingview-widget-container.resizable-element').not(container).each(function() {
+                    // Nastavíme príznak, že tento konkrétny element meníme skriptom
+                    this.setAttribute('data-script-resized', 'true');
+                    // Aplikujeme rovnakú šírku a výšku
+                    this.style.width = targetWidth;
+                    this.style.height = targetHeight;
+                });
+            }
         }
     });
+    
+  
     
     
     // load favourite group

@@ -382,7 +382,7 @@ h3{
 	padding: 0 7px;
     cursor: pointer;
     text-transform: capitalize;
-    margin: 0 0 0 12px;
+    margin: 0 12px 0 12px;
     text-align: center;
     min-width: 62px;
     border: 2px solid var(--red);
@@ -406,6 +406,28 @@ h3{
 }
 .favourite-stocks.show{
   display: block;
+}
+.sync-size-check-wr{
+  display: inline-block;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--darkblue);
+  height: 27px;
+  line-height: 27px;
+  padding: 0 7px 0 0;
+  cursor: pointer;
+  text-transform: initial;
+  margin: 0;
+}
+.sync-size-check-wr label{
+  cursor: pointer;
+}
+.sync-size-check-wr input{
+  margin-right: 6px;
+}
+.charts-heading{
+  flex-wrap: wrap;
 }
 .tradingview-widget-container-outer{
 	float: left;
